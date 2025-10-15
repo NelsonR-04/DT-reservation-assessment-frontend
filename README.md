@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coworking Reservation System - Frontend
 
-## Getting Started
+A modern Next.js frontend application for managing coworking space reservations with TypeScript, Tailwind CSS, and feature-based architecture.
 
-First, run the development server:
+## 🚀 Technology Stack
+
+- **Framework**: Next.js 15+ with TypeScript
+- **Styling**: Tailwind CSS v4
+- **Testing**: Jest + React Testing Library + Playwright
+- **Architecture**: Feature-based organization
+- **Code Quality**: ESLint + Prettier
+- **Containerization**: Docker
+
+## 📁 Project Structure
+
+```
+src/
+├── features/           # Feature-based organization
+│   ├── spaces/         # Space management features
+│   ├── reservations/   # Reservation features
+│   └── admin/          # Admin dashboard features
+├── shared/             # Shared components and utilities
+│   ├── components/     # Common UI components
+│   ├── hooks/          # Common custom hooks
+│   ├── services/       # API services
+│   ├── types/          # TypeScript type definitions
+│   └── utils/          # Utility functions
+├── pages/              # Next.js pages
+├── styles/             # Global styles
+└── config/             # Configuration files
+```
+
+## 🛠️ Setup & Installation
+
+1. **Install dependencies**:
+
+```bash
+npm install
+```
+
+2. **Environment configuration**:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Edit `.env.local` with your configuration:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_API_KEY=your-api-key-here
+```
+
+3. **Start development server**:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Development
 
-## Learn More
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build production application
+- `npm run start` - Start production server
 
-To learn more about Next.js, take a look at the following resources:
+### Code Quality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Run ESLint with auto-fix
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Testing
 
-## Deploy on Vercel
+- `npm test` - Run unit tests with Jest
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:e2e` - Run E2E tests with Playwright
+- `npm run test:e2e:ui` - Run E2E tests with Playwright UI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Unit Tests
+
+Unit tests are located alongside components using Jest and React Testing Library:
+
+```bash
+npm test
+```
+
+### E2E Tests
+
+End-to-end tests use Playwright and are located in `/tests/e2e/`:
+
+```bash
+npm run test:e2e
+```
+
+## 🐳 Docker Deployment
+
+### Development
+
+```bash
+docker-compose up -d
+```
+
+### Production Build
+
+```bash
+docker build -t coworking-frontend .
+docker run -p 3000:3000 coworking-frontend
+```
+
+## 🔧 Configuration
+
+### Path Aliases
+
+The project uses TypeScript path mapping for cleaner imports:
+
+- `@/*` - src/
+- `@/features/*` - src/features/
+- `@/shared/*` - src/shared/
+- `@/config/*` - src/config/
+
+### API Integration
+
+API calls are handled through a centralized HTTP client with automatic error handling and authentication.
+
+## 🎯 Features
+
+- ✅ View available coworking spaces
+- ✅ Browse existing reservations with pagination
+- ✅ Create new reservations
+- ✅ View space details
+- ✅ Delete reservations
+- ✅ Admin dashboard with IoT telemetry (bonus feature)
+
+## 📋 Development Guidelines
+
+- Follow feature-based architecture
+- Use TypeScript for type safety
+- Implement proper error handling
+- Write tests for all features
+- Follow ESLint and Prettier rules
+- Use semantic commit messages
+
+## 🚨 Requirements
+
+- Node.js 20+
+- NPM or compatible package manager
+- Backend API running on port 3001
+
+## 🔗 Related Projects
+
+- [Backend API](../DT-reservation-assessment-backend/) - Node.js/TypeScript API
