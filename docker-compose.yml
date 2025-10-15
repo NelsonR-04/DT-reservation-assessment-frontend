@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Configure the backend API URL via environment variable
+      # Example: NEXT_PUBLIC_API_URL=http://localhost:3001 or your production backend URL
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+      - NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY:-development-api-key}
+    restart: unless-stopped
