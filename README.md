@@ -14,20 +14,78 @@ A modern Next.js frontend application for managing coworking space reservations 
 ## 📁 Project Structure
 
 ```
-src/
-├── features/           # Feature-based organization
-│   ├── spaces/         # Space management features
-│   ├── reservations/   # Reservation features
-│   └── admin/          # Admin dashboard features
-├── shared/             # Shared components and utilities
-│   ├── components/     # Common UI components
-│   ├── hooks/          # Common custom hooks
-│   ├── services/       # API services
-│   ├── types/          # TypeScript type definitions
-│   └── utils/          # Utility functions
-├── pages/              # Next.js pages
-├── styles/             # Global styles
-└── config/             # Configuration files
+DT-reservation-assessment-frontend/
+├── src/                              # Código fuente de la aplicación
+│   ├── app/                          # Next.js App Router (rutas)
+│   │   ├── admin/                    # Página de dashboard administrativo
+│   │   ├── login/                    # Página de inicio de sesión
+│   │   ├── places/                   # Páginas de lugares
+│   │   ├── reservations/             # Páginas de reservas
+│   │   ├── spaces/                   # Páginas de espacios
+│   │   ├── layout.tsx                # Layout principal de la aplicación
+│   │   ├── page.tsx                  # Página de inicio
+│   │   ├── globals.css               # Estilos globales
+│   │   └── favicon.ico               # Icono de la aplicación
+│   ├── features/                     # Organización basada en características
+│   │   ├── admin/                    # Características del dashboard
+│   │   │   ├── components/           # Componentes específicos del admin
+│   │   │   ├── hooks/                # Hooks para telemetría IoT
+│   │   │   └── types/                # Tipos del dashboard
+│   │   ├── auth/                     # Autenticación
+│   │   │   ├── components/           # Componentes de login/auth
+│   │   │   └── services/             # Servicios de autenticación
+│   │   ├── places/                   # Gestión de lugares
+│   │   │   ├── components/           # Componentes de lugares
+│   │   │   ├── hooks/                # Hooks para lugares
+│   │   │   ├── services/             # API services de lugares
+│   │   │   └── types/                # Tipos de lugares
+│   │   ├── reservations/             # Gestión de reservas
+│   │   │   ├── components/           # Componentes de reservas
+│   │   │   ├── hooks/                # Hooks para reservas
+│   │   │   ├── services/             # API services de reservas
+│   │   │   └── types/                # Tipos de reservas
+│   │   └── spaces/                   # Gestión de espacios
+│   │       ├── components/           # Componentes de espacios
+│   │       ├── hooks/                # Hooks para espacios
+│   │       ├── services/             # API services de espacios
+│   │       └── types/                # Tipos de espacios
+│   ├── shared/                       # Componentes y utilidades compartidas
+│   │   ├── components/               # Componentes UI comunes (Button, Card, etc.)
+│   │   │   └── ui/                   # Componentes base de shadcn/ui
+│   │   ├── const/                    # Constantes de la aplicación
+│   │   ├── hooks/                    # Hooks personalizados compartidos
+│   │   ├── lib/                      # Librerías y utilidades
+│   │   ├── providers/                # Providers de React (Redux, Theme)
+│   │   ├── services/                 # Servicios HTTP compartidos
+│   │   ├── store/                    # Redux store y slices
+│   │   ├── types/                    # Tipos TypeScript compartidos
+│   │   └── utils/                    # Funciones utilitarias
+│   ├── assets/                       # Recursos estáticos
+│   │   └── svgs/                     # Íconos SVG
+│   └── config/                       # Archivos de configuración
+│       └── api.ts                    # Configuración de URLs de API
+├── public/                           # Archivos públicos estáticos
+│   ├── next.svg                      # Logo de Next.js
+│   ├── vercel.svg                    # Logo de Vercel
+│   └── *.svg                         # Otros íconos
+├── docker/                           # Configuración Docker (si existe)
+├── tests/                            # Pruebas E2E con Playwright
+│   └── e2e/                          # Pruebas end-to-end
+├── .env.local.example                # Plantilla de variables de entorno
+├── .eslintrc.js                      # Configuración ESLint
+├── .prettierrc                       # Configuración Prettier
+├── components.json                   # Configuración de shadcn/ui
+├── docker-compose.yml                # Docker Compose para desarrollo
+├── Dockerfile                        # Imagen Docker de producción
+├── eslint.config.mjs                 # Configuración moderna de ESLint
+├── jest.config.js                    # Configuración de Jest
+├── next.config.ts                    # Configuración de Next.js
+├── playwright.config.ts              # Configuración de Playwright
+├── postcss.config.mjs                # Configuración de PostCSS
+├── tailwind.config.js                # Configuración de Tailwind CSS
+├── tsconfig.json                     # Configuración de TypeScript
+├── package.json                      # Dependencias y scripts
+└── README.md                         # Este archivo
 ```
 
 ## 🛠️ Setup & Installation
@@ -74,32 +132,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 
-### Testing
-
-- `npm test` - Run unit tests with Jest
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:coverage` - Run tests with coverage report
-- `npm run test:e2e` - Run E2E tests with Playwright
-- `npm run test:e2e:ui` - Run E2E tests with Playwright UI
-
-## 🧪 Testing
-
-### Unit Tests
-
-Unit tests are located alongside components using Jest and React Testing Library:
-
-```bash
-npm test
-```
-
-### E2E Tests
-
-End-to-end tests use Playwright and are located in `/tests/e2e/`:
-
-```bash
-npm run test:e2e
-```
-
 ## 🐳 Docker Deployment
 
 ### Development
@@ -137,7 +169,6 @@ API calls are handled through a centralized HTTP client with automatic error han
 - ✅ Create new reservations
 - ✅ View space details
 - ✅ Delete reservations
-- ✅ Admin dashboard with IoT telemetry (bonus feature)
 
 ## 📋 Development Guidelines
 
@@ -146,7 +177,6 @@ API calls are handled through a centralized HTTP client with automatic error han
 - Implement proper error handling
 - Write tests for all features
 - Follow ESLint and Prettier rules
-- Use semantic commit messages
 
 ## 🚨 Requirements
 
